@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Студенты</title><link rel="stylesheet" href="/style.css"></head>
+<body><main class="wide"><header><div><h1>Список студентов</h1><p class="muted" th:text="|Вы вошли как ${username}|"></p></div><a class="logout" href="/logout">Выйти</a></header>
+<a class="button-link" href="/students/add">+ Добавить студента</a>
+<table><thead><tr><th>ID</th><th>Имя</th><th>Курс</th><th>Есть задолженность</th></tr></thead><tbody>
+<tr th:each="student : ${students}"><td th:text="${student.id}"></td><td th:text="${student.name}"></td><td th:text="${student.course}"></td><td th:text="${student.hasDebt ? 'Да' : 'Нет'}"></td></tr>
+<tr th:if="${#lists.isEmpty(students)}"><td colspan="4" class="empty">Пока студентов нет. Добавьте первого.</td></tr>
+</tbody></table></main></body></html>
